@@ -1,4 +1,4 @@
-# empty-project
+# Avia Tickets
 
 Приложение для поиска авиа-билетов (вдохновленное Avia Sales:))
 
