@@ -11,7 +11,7 @@ class TicketsUI {
     console.log(tickets)
     if (!tickets.length) {
       this.showEmptyMsg()
-      return;
+      return
     }
 
     let fragment = ''
@@ -21,7 +21,7 @@ class TicketsUI {
       const template = TicketsUI.ticketTemplate(ticket, currency)
       fragment += template;
 
-    });
+    })
 
     this.container.insertAdjacentHTML('afterbegin', fragment)
   }
@@ -68,11 +68,13 @@ class TicketsUI {
         </div>
         <div class="ticket-time-price d-flex align-items-center">
           <span class="ticket-time-departure">${ticket.departure_at}</span>
+          <span class="ticket-time-return">${ticket.return_at}</span>
           <span class="ticket-price ml-auto">${currency}${ticket.price}</span>
         </div>
         <div class="ticket-additional-info">
           <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
           <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
+         
         </div>
         <a
         class=" add-favourite ml-auto transparent"

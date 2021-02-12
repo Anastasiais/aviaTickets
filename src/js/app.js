@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', e => {
     const depart_date = formUI.departDateValue
     const return_date = formUI.returnDateValue
     const currency = currencyUI.currecyValue
-    const id = locations.index
 
     await locations.fetchTickets({
       origin,
@@ -38,9 +37,9 @@ document.addEventListener('DOMContentLoaded', e => {
       depart_date,
       return_date,
       currency,
-      id
+
     });
 
-    ticketsUI.renderTickets(locations.lastSearch);
+    ticketsUI.renderTickets(locations.lastSearch)
   }
 });

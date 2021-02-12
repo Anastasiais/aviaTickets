@@ -1,5 +1,5 @@
-import axios from 'axios';
-import config from '../config/apiConfig';
+import axios from 'axios'
+import config from '../config/apiConfig'
 
 /**
  * /countries - array of countries
@@ -8,19 +8,19 @@ import config from '../config/apiConfig';
  */
 class Api {
   constructor(config) {
-    this.url = config.url;
+    this.url = config.url
   }
   async countries() {
     try {
-      const response = await axios.get(`${this.url}/countries`);
-      return response.data;
+      const response = await axios.get(`${this.url}/countries`)
+      return response.data
     } catch (err) {
-      return Promise.reject(err);
+      return Promise.reject(err)
     }
   }
   async cities() {
     try {
-      const response = await axios.get(`${this.url}/cities`);
+      const response = await axios.get(`${this.url}/cities`)
       return response.data;
     } catch (err) {
       return Promise.reject(err);
@@ -28,7 +28,7 @@ class Api {
   }
   async airlines() {
     try {
-      const response = await axios.get(`${this.url}/airlines`);
+      const response = await axios.get(`${this.url}/airlines`)
       return response.data;
     } catch (err) {
       return Promise.reject(err);
@@ -38,14 +38,14 @@ class Api {
     try {
       const response = await axios.get(`${this.url}/prices/cheap`, {
         params,
-      });
-      return response.data;
+      })
+      return response.data
     } catch (err) {
-      return Promise.reject(err);
+      return Promise.reject(err)
     }
   }
 }
 
-const api = new Api(config);
+const api = new Api(config)
 
-export default api;
+export default api
