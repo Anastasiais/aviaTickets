@@ -1,37 +1,38 @@
-import currencyUI from './currency';
+import currencyUI from './currency'
 
 class TicketsUI {
   constructor(currency) {
-    this.container = document.querySelector('.tickets-sections .row');
-    this.getCurrencySymbol = currency.getCurrencySymbol.bind(currency);
+    this.container = document.querySelector('.tickets-sections .row')
+    this.getCurrencySymbol = currency.getCurrencySymbol.bind(currency)
   }
 
   renderTickets(tickets) {
-    this.clearContainer();
-
+    this.clearContainer()
+    console.log(tickets)
     if (!tickets.length) {
-      this.showEmptyMsg();
+      this.showEmptyMsg()
       return;
     }
 
-    let fragment = '';
-    const currency = this.getCurrencySymbol();
+    let fragment = ''
+    const currency = this.getCurrencySymbol()
 
     tickets.forEach(ticket => {
-      const template = TicketsUI.ticketTemplate(ticket, currency);
+      const template = TicketsUI.ticketTemplate(ticket, currency)
       fragment += template;
+
     });
 
-    this.container.insertAdjacentHTML('afterbegin', fragment);
+    this.container.insertAdjacentHTML('afterbegin', fragment)
   }
 
   clearContainer() {
-    this.container.innerHTML = '';
+    this.container.innerHTML = ''
   }
 
   showEmptyMsg() {
-    const template = TicketsUI.emptyMsgTemplate();
-    this.container.insertAdjacentHTML('afterbegin', template);
+    const template = TicketsUI.emptyMsgTemplate()
+    this.container.insertAdjacentHTML('afterbegin', template)
   }
 
   static emptyMsgTemplate() {
@@ -39,7 +40,7 @@ class TicketsUI {
     <div class="tickets-empty-res-msg">
       По вашему запросу билетов не найдено.
     </div>
-    `;
+    `
   }
 
   static ticketTemplate(ticket, currency) {
@@ -73,12 +74,15 @@ class TicketsUI {
           <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
           <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
         </div>
+        <a
+        class=" add-favourite ml-auto transparent"
+        ><i class="material-icons favourite-icon">favorite_border</i></a
+      >
       </div>
     </div>
-    `;
+    `
   }
 }
 
-const ticketsUI = new TicketsUI(currencyUI);
-
-export default ticketsUI;
+const ticketsUI = new TicketsUI(currencyUI)
+export default ticketsUI

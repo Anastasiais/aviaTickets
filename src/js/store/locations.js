@@ -28,9 +28,7 @@ class Locations {
   }
 
   getCityCodeByKey(key) {
-    const city = Object.values(this.cities).find(
-      item => item.full_name === key,
-    );
+    const city = Object.values(this.cities).find((item) => item.full_name.replace(/\s/g, '') === key.replace(/\s/g, ''));
     return city.code;
   }
 
@@ -89,7 +87,7 @@ class Locations {
   }
 
   serializeTickets(tickets) {
-    return Object.values(tickets).map(ticket => {
+    return Object.values(tickets).map((ticket) => {
       return {
         ...ticket,
         origin_name: this.getCityNameByCode(ticket.origin),
@@ -98,11 +96,11 @@ class Locations {
         airline_name: this.getAirlineNameByCode(ticket.airline),
         departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
         return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'),
-      };
-    });
+      }
+    })
   }
 }
 
-const locations = new Locations(api, { formatDate });
+const locations = new Locations(api, { formatDate })
 
-export default locations;
+export default locations
