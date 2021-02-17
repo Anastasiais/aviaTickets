@@ -144,8 +144,9 @@
   margin-top: 10px;
 }
 
-.ticket-card {
+.card .ticket-card {
   padding: 10px 15px;
+  border-radius: 5px;
 }
 
 .ticket-airline-name {
@@ -173,25 +174,36 @@
   font-size: 26px;
 }
 
-.ticket-time-departure {
+.ticket-card .ticket-airline {
+  margin-bottom: 10px;
+}
+
+.ticket-card .ticket-price {
+  right: 15px;
+  bottom: 8px;
+}
+
+.ticket-time-departure .ticket-time-return {
   font-weight: bold;
   color: gray;
+  padding: 10px;
+
+}
+
+ .ticket-time-price .ticket-time-return {
+  padding-left: 50px;
 }
 
 .ticket-price {
-  font-size: 25px;
+  font-size: 20px;
   padding: 5px;
-  background: #6a1b9a;
-  color: #fff;
+  background: #fff;
+  color: rgb(34, 233, 233);
 }
 
 .ticket-additional-info {
   font-size: 14px;
   font-weight: bold;
-}
-
-.ticket-card .add-favorite {
-  margin-top: 10px;
 }
 
 .tickets-empty-res-msg {
@@ -202,3 +214,17 @@
   font-size: 18px;
 }
 
+.ticket-card .add-favourite {
+  position: absolute;
+  top: 0;
+  right: 13px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.favourite-icon::after {
+  content: 'favorite_border';
+}
+.favourite-icon.favourite-true::after {
+  content: 'favorite';
+}

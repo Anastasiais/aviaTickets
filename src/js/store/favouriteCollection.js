@@ -1,34 +1,59 @@
+import locations from './locations';
+import favouriteUI from '../views/favourites';
 
-class StoreUI {
-  static getFavouritesCollection() {
-    let favourites
-    if(localStorage.getItem('favourites') === null) {
-       favourites = []       
+class Store {
+  constructor() {
+    this.favouriteTickets = JSON.parse(localStorage.getItem('favouriteTickets')) || {};
+  }
+
+  changeFavouriteState(ticket) {
+    this.favouriteTickets = JSON.parse(localStorage.getItem('favouriteTickets')) || {}
+    if(this.checkTicketIsFavourite(ticket)) {
+      this.removeFavouritesItem(ticket)
     } else {
-      favourites = JSON.parse(localStorage.getItem('books'))
+      this.addFavouritesItem(ticket)
     }
-    return favourites
-  }
-  static addFavouriteTicketToCollection(favourite){
-    const favourites = StoreUI.getBooks()
-
-    favourites.push(favourite)
-
-    localStorage.setItem('favourites', JSON.stringify(favourites))
+    locations.changeFavouriteState(ticket, !this.checkTicketIsFavourite(ticket));
   }
 
-  static removeBook(id) {
-    const favorites = StoreUI.getFavouritesCollection()
-
-    favourites.forEach((favourite, id) =>{
-      if(book.isbn === isbn) {
-        books.splice(index, 1)
-      }
-    })
-
-    localStorage.setItem('books', JSON.stringify(books))
+  checkTicketIsFavourite(ticket) {
+    this.favouriteTickets = JSON.parse(localStorage.getItem('favouriteTickets')) || {}
+    return this.favouriteTickets.hasOwnProperty(ticket)
   }
-} 
-const store = new StoreUI()
+
+  addFavouritesItem(ticket) {
+    const ticketInfo = locations.getTicketByID(ticket)
+    Store.addToLocalStorageObject('favouriteTickets', ticket, ticketInfo)
+    this.favouriteTickets = JSON.parse(localStorage.getItem('favouriteTickets')) || {}
+  }
+
+  removeFavouritesItem(ticket) {
+    Store.removeFromLocalStorageObject('favouriteTickets', ticket)
+    this.favouriteTickets = JSON.parse(localStorage.getItem('favouriteTickets')) || {}
+  }
+
+  getFavouritesList() {
+    favouriteUI.renderFavouriteTickets(this.favouriteTickets);
+  }
+
+  static addToLocalStorageObject(name, key, value) {
+    let existing = localStorage.getItem(name);
+    existing = existing ? JSON.parse(existing) : {};
+
+    existing[key] = value;
+    localStorage.setItem(name, JSON.stringify(existing));
+  };
+
+  static removeFromLocalStorageObject(name, key) {
+    let existing = localStorage.getItem(name);
+    existing = existing ? JSON.parse(existing) : {};
+
+    delete existing[key];
+    localStorage.setItem(name, JSON.stringify(existing));
+  };
+}
+
+const store = new Store()
 
 export default store
+

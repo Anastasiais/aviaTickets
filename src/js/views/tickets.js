@@ -4,6 +4,11 @@ class TicketsUI {
   constructor(currency) {
     this.container = document.querySelector('.tickets-sections .row')
     this.getCurrencySymbol = currency.getCurrencySymbol.bind(currency)
+    this.favouriteAddBtn = '.add-favourite'
+  }
+
+  get ticketsContainer() {
+    return this.container;
   }
 
   renderTickets(tickets) {
@@ -44,9 +49,10 @@ class TicketsUI {
   }
 
   static ticketTemplate(ticket, currency) {
+    console.info('ticket: ', ticket)
     return `
     <div class="col s12 m6">
-      <div class="card ticket-card">
+      <div class="card ticket-card"  data-ticket-id="${ticket.id}">
         <div class="ticket-airline d-flex align-items-center">
           <img
             src="${ticket.airline_logo}"
@@ -78,7 +84,7 @@ class TicketsUI {
         </div>
         <a
         class=" add-favourite ml-auto transparent"
-        ><i class="material-icons favourite-icon">favorite_border</i></a
+        ><i class="material-icons favourite-icon favourite-${ticket.isFavourite}"></i></a
       >
       </div>
     </div>

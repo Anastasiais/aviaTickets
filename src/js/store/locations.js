@@ -1,6 +1,7 @@
 import api from '../services/apiService'
 import { formatDate } from '../helpers/date'
-import { v4 as uuidv4 } from 'uuid'
+import { Base64 } from 'js-base64'
+import store from './favouriteCollection'
 
 class Locations {
   constructor(api, helpers) {
@@ -44,7 +45,11 @@ class Locations {
   getAirlineLogoByCode(code) {
     return this.airlines[code] ? this.airlines[code].logo : ''
   }
-
+  
+  getTicketByID(id) {
+    const ticket = Object.values(this.lastSearch).find((item) => item.id === id)
+    return ticket
+}
 
   createShortCities(cities) {
     return Object.entries(cities).reduce((acc, [, city]) => {
@@ -83,23 +88,40 @@ class Locations {
     }, {})
   }
 
+  createTicketId(ticket) {
+    const covertedDepartureAt = this.formatDate(ticket.departure_at, 'dd MMM yyyy hh').replace(/\s/g, '');
+    return covertedDepartureAt + ticket.flight_number.toString()
+}
+
+
+  changeFavouriteState(ticketID, state = false) {
+    const ticket = Object.values(this.lastSearch).find((el) => el.id === ticketID)
+    ticket.isFavourite = state;
+    return state;
+  }
+
+   getFavouriteState(ticket) {
+     const ticketID = this.createTicketId(ticket)
+     return store.checkTicketIsFavourite(ticketID)
+ }
+
   async fetchTickets(params) {
     const response = await this.api.prices(params)
     this.lastSearch = this.serializeTickets(response.data)
-    console.log(this.lastSearch[0])
   }
 
   serializeTickets(tickets) {
     return Object.values(tickets).map((ticket) => {
       return {
         ...ticket,
-        id: uuidv4(),
+        id: this.createTicketId(ticket),
         origin_name: this.getCityNameByCode(ticket.origin),
         destination_name: this.getCityNameByCode(ticket.destination),
         airline_logo: this.getAirlineLogoByCode(ticket.airline),
         airline_name: this.getAirlineNameByCode(ticket.airline),
         departure_at: this.formatDate(ticket.departure_at, 'dd MMM yyyy hh:mm'),
-        return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm')             
+        return_at: this.formatDate(ticket.return_at, 'dd MMM yyyy hh:mm'), 
+        isFavourite: this.getFavouriteState(ticket),          
       }
     })
   }
