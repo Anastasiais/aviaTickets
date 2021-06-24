@@ -1,0 +1,324 @@
+.nav-wrapper {
+  z-index: 1;
+}
+
+.container .row {
+  margin-bottom: 0;
+}
+
+.container .row .col {
+  padding: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
+
+.justify-items-between {
+  justify-content: space-between;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header styles */
+nav .logo .brand-logo {
+  font-size: 2.1rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+nav .logo i.material-icons {
+  font-size: 24px;
+}
+
+.header .favorites {
+  margin: 0;
+}
+
+.header .currency-select input.select-dropdown {
+  margin: 0;
+  color: #fff;
+  border-bottom: none;
+}
+
+.header .currency-select input.select-dropdown:focus {
+  border-bottom: none;
+}
+
+.header .currency-select {
+  width: 120px;
+  font-size: 2.1rem;
+}
+
+.header .currency-select .caret {
+  fill: #fff;
+  padding-left: 0;
+}
+
+.favourites {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  transform: translate(10px);
+}
+
+.btn-floating.btn-large {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 20px;
+  background-color: transparent;
+  overflow: hidden;
+  border: 1px solid white;
+}
+
+a i.material-icons {
+  transform: translate(0%, 0%);
+}
+
+.favourites-content {
+  display: none;
+  transform: translate(-48%);
+  background-color: #f1f4f7;
+  overflow: auto;
+  max-width:520px;
+}
+
+.favourites-content.show {
+  display: block;
+  z-index: 11;
+}
+
+.favourite-item {
+  color: black;
+  padding: 0;
+  margin: 0 auto;
+  text-decoration: none;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;
+  z-index: -2;
+  width:308px;
+  height: 165px;
+  position: relative;
+}
+
+.favourite-item::after {
+  content: "";
+  display: block;
+  padding-bottom: 0%;
+}
+
+ .favourite-item:hover {
+  background-color:transparent;
+}
+
+.favourite-item-airline-img {
+  width: 68px;
+  height: 68px;
+}
+
+img.favourite-item-airline-img {
+  margin: 2px;
+  padding:5px;
+  position: absolute;
+}
+
+.favourite-item-info {
+  line-height: 0.81;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.favourite-ticket-time {
+ font-size: 14px;
+ width:300px;
+}
+
+.favourite-ticket-time-return {
+  color: gray;
+  font-weight: 700;
+}
+
+.favourite-item-destination {
+  border-bottom: 1px dashed gray;
+  padding-top: 35px;
+
+}
+
+.favourite-ticket-price {
+  font-size: 14px;
+  padding: 0;
+  font-weight: 500;
+  padding-left: 7px;
+}
+
+.favourite-additional-info {
+  font-size: 14px;
+  padding: 10px;
+  font-weight: 600;
+  margin: 5px;
+
+}
+
+.favourite-item-city {
+  font-size: 16px;
+  margin: 5px;
+  padding: 20px;
+  padding-left: 15px;
+  text-transform: uppercase;
+}
+
+.favourite-ticket-time-departure {
+  font-size: 14px;
+  padding-right: 52px;
+}
+
+.favourite-ticket-flight-number {
+  padding-left: 15px;
+}
+
+.btn-floating.btn-large.delete-favourite {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid black;
+  transform: translate(260px, -140px);
+}
+
+i.material-icons.delete-favourite {
+  color: black;
+  position:relative;
+  transform: translate(0, -8px);
+}
+
+.favourite-item-city {
+  font-size: 16px;
+  margin: 5px;
+  text-transform: uppercase;
+}
+
+.row .card {
+  width: 500px;
+  border-radius: 5px;
+}
+
+.card .ticket-card {
+  padding: 10px 15px;
+}
+
+.ticket-airline-name {
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.ticket-airline-img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+.ticket-destination {
+  padding: 0 12px;
+  border-bottom: 1px dashed gray;
+}
+
+.ticket-destination .ticket-city {
+  font-size: 26px;
+  text-transform: uppercase;
+}
+
+.ticket-destination i.material-icons {
+  font-size: 26px;
+}
+
+.ticket-card .ticket-airline {
+  margin-bottom: 0;
+}
+
+img {
+  padding: 20px;
+}
+
+.ticket-card .ticket-price {
+  right: 15px;
+  bottom: 0;
+}
+
+.ticket-time {
+  padding: 15px;
+}
+
+.ticket-time .ticket-time-return {
+  font-weight: bold;
+  color: gray;
+}
+
+.ticket-additional-info {
+  font-size: 18px;
+  font-weight: bold;
+  flex-direction: row;
+}
+
+.ticket-transfers {
+  padding: 10px;
+}
+
+.ticket-flight-number {
+  padding-left: 30px;
+}
+
+.ticket-price {
+  font-size: 20px;
+  padding: 12px;
+  background: #fff;
+  color: rgb(17, 16, 16);
+  bottom: 0;
+  margin-left: auto;
+}
+
+.tickets-empty-res-msg {
+  padding: 10px 15px;
+  text-align: center;
+  background: whitesmoke;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.ticket-card .add-favourite {
+  position: absolute;
+  top: 0;
+  right: 13px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.favourite-icon::after {
+  content: "favorite_border";
+}
+.favourite-icon.favourite-true::after {
+  content: "favorite";
+}
