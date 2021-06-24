@@ -21,3 +21,4 @@ npm run build
 ```sh
 npm run dev
 ```
+ссылка на приложение: https://anastasiais/github.io/aviaTickets. Далее надо зайти в /dist, далее /index.html
