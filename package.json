@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://Anastasiais/github.io/aviaTickets",
+  "homepage": "https://Anastasiais/github.io/aviaTickets/dist/index.html",
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --mode=production",
